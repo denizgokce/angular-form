@@ -1,4 +1,4 @@
-<div [style.height]="this.screenHeight + 'px'" class="d-flex align-items-center">
+<div [style.height]="this.screenHeight + 'px'" class="d-flex align-items-center" *ngIf="this.model">
   <mat-card class="m-auto" style="min-width: 450px">
     <mat-card-header>
       <mat-card-title>{{this.model.name}}</mat-card-title>

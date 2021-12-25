@@ -20,7 +20,7 @@ export class ThankyouComponent implements OnInit {
     this.onResize();
   }
 
-  model!: FormModel;
+  model: FormModel = new FormModel();
 
   @HostListener('window:resize', ['$event'])
   onResize() {
