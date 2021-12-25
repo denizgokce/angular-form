@@ -1,0 +1,56 @@
+<div [style.height]="this.screenHeight + 'px'" class="d-flex align-items-center">
+  <form class="enter-form" *ngIf="this.form" [formGroup]="this.form" (ngSubmit)="onFormSubmit()">
+    <mat-card>
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="Ex. Deniz Gokce" formControlName="name">
+        <mat-error
+          *ngIf="this.form.controls['name'].invalid">{{this.form.controls['name'].getError('invalid')}}</mat-error>
+      </mat-form-field>
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Username</mat-label>
+        <input matInput placeholder="Ex. denizgokce93@gmail.com" formControlName="username">
+        <mat-error *ngIf="this.form.controls['name'].invalid">Username must be in an email format</mat-error>
+      </mat-form-field>
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Country</mat-label>
+        <mat-select formControlName="country"
+                    (selectionChange)="this.form.controls['postCode'].updateValueAndValidity();">
+          <mat-option value="ie">Ireland</mat-option>
+          <mat-option value="uk">United Kingdom</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Post Code</mat-label>
+        <input matInput placeholder="Ex. GU16 7HF" formControlName="postCode">
+        <mat-error
+          *ngIf="this.form.controls['postCode'].invalid">{{this.form.controls['postCode'].getError('invalid')}}</mat-error>
+      </mat-form-field>
+      <mat-form-field class="w-100" appearance="outline">
+        <input
+          type="text"
+          placeholder="Enter Name"
+          matInput
+          formControlName="movie"
+          [matAutocomplete]="auto">
+        <button mat-button matSuffix mat-icon-button aria-label="Clear" *ngIf="movieInput"
+                (click)="movieInput = ''">
+          <mat-icon>close</mat-icon>
+        </button>
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option
+            *ngFor="let option of movies | async"
+            (onSelectionChange)="onSelectionChange($event)"
+            [value]="option">
+            {{option}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+      <!--form footer-->
+      <div class="d-flex justify-content-end">
+        <button mat-raised-button color="primary">Submit</button>
+      </div>
+    </mat-card>
+  </form>
+</div>
+

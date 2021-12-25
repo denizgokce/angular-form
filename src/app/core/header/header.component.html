@@ -1,0 +1,24 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row class="d-flex justify-content-between">
+    <div>
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" routerLink="/">
+        <mat-icon>meeting_room</mat-icon>
+      </button>
+      <span>Roomex</span>
+    </div>
+    <div class="d-inline-flex justify-content-end">
+      <button mat-icon-button aria-label="Example icon button with a home icon" (click)="this.toggleDarkTheme();"
+      [title]="this.isDarkTheme ? 'Switch To Light Mode' : 'Switch To Dark Mode'">
+        <mat-icon>{{this.isDarkTheme ? 'brightness_7' : 'brightness_2'}}</mat-icon>
+      </button>
+    </div>
+  </mat-toolbar-row>
+
+  <!--<span class="example-spacer"></span>
+  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <mat-icon>favorite</mat-icon>
+  </button>
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+    <mat-icon>share</mat-icon>
+  </button>-->
+</mat-toolbar>
